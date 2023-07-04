@@ -32,4 +32,8 @@ public class LivroController {
         return livros;
     }
 
+    public Livro getById(int livroId) {
+        return bookRepo.buscarPorId(livroId);
+    }
+
 }

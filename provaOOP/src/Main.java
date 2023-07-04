@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +52,7 @@ class Main {
 	private static void excluirLivro() {
 		String livroid = JOptionPane.showInputDialog("Digite o id do livro");
 		LivroController livroController = new LivroController();
-		livroController.excluirLivro(Integer.valueOf(livroid));
+		livroController.excluirLivro(livroController.getById(Integer.parseInt(livroid)));
 		
 		JOptionPane.showMessageDialog(null, "Excluido");
 	}
@@ -59,9 +60,7 @@ class Main {
 	private static void adicionariLivro() {
 		String id = JOptionPane.showInputDialog("Digite o id do livro");
 		String titulo = JOptionPane.showInputDialog("Digite o titulo  ");
-		Livro livro = new Livro();
-		livro.setId(Integer.valueOf(id));
-		livro.setTitulo(titulo);
+		Livro livro = new Livro(Integer.valueOf(id), titulo, StatusReserva.DISPONIVEL);
 		LivroController livroController = new LivroController();
 		livroController.adicionarLivro(livro);
 		
@@ -93,19 +92,17 @@ class Main {
 		Cliente cliente = new  Cliente();
 		cliente.setId(Integer.valueOf(clienteid));
 	
-		Emprestimo emprestimo = new Emprestimo();
-		
-		emprestimo.setId(Integer.valueOf(id));
-		emprestimo.setCliente(cliente);
-		emprestimo.setDataRetorno(Date.parse(dataRetorno));
-		emprestimo.setLivro(livro);
-		emprestimo.setDataEmprestimo(Date.parse(dataEmprestimo));
+		Emprestimo emprestimo = new Emprestimo(
+            Integer.valueOf(id),
+             Integer.valueOf(livroid), 
+             Integer.valueOf(clienteid),
+             LocalDateTime.now(),
+             LocalDateTime.now().plusDays(7));
 		
 		EmprestimoController controller = new EmprestimoController();
-		controller.criarEmprestimo(emprestimo);
+		controller.realizarEmprestimo(Integer.valueOf(livroid), Integer.valueOf(clienteid));
 		
 		JOptionPane.showMessageDialog(null, "Cadastrado");
 		
-		return  ;
 	}
 }
