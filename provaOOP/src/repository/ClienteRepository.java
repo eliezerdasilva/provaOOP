@@ -3,7 +3,6 @@ package repository;
 import java.util.ArrayList;
 
 import models.Cliente;
-import models.Emprestimo;
 
 public class ClienteRepository {
 
