@@ -6,6 +6,41 @@ import models.Livro;
 
 class Main {
     public static void main(String[] args) {
+    	boolean inicializacao = true;
+		int opcao = 0;
+
+		while (inicializacao) {
+			opcao = Integer.parseInt(JOptionPane.showInputDialog(telaInicial()));
+
+			switch (opcao) {
+			case 1:
+				//int opcao = Integer.parseInt(JOptionPane.showInputDialog(montarSubMenuFuncionarios()));
+				//operacaoFuncionario(opcao, funcionarioController);
+				break;
+			case 2:
+				// Chamar menu cliente
+				break;
+			case 3:
+				// Chamar menu produto
+				break;
+			case 4:
+				// Chamar menu cardapio
+				break;
+			case 5:
+				// Chamar menu mesa
+				break;
+			case 6:
+				// Chamar menu pedido
+				break;
+			case 7:
+				inicializacao = false;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Escolha uma opção válida");
+				break;
+			}
+		}
+    	
         
 		boolean executando = true;
 		int opcaoSelecionada = 0;

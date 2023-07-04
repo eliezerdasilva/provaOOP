@@ -2,7 +2,7 @@ package repository;
 
 import java.util.ArrayList;
 
-import model.Emprestimo;
+import models.Emprestimo;
 
 public class EmprestimoRespository {
 	
@@ -18,11 +18,12 @@ public class EmprestimoRespository {
 	public void excluir(Emprestimo emprestimoRemover) {
 		emprestimo.remove(emprestimoRemover);
 	}
-	public void alterar(ArrayList<Emprestimo> emprestimoAlterar) {
-		if(emprestimo == null) {
-			emprestimo.addAll(emprestimoAlterar);
+	public void alterar(Emprestimo emprestimoAlterar) {
+		Emprestimo empresti = buscarPorId(emprestimoAlterar.getId());
+		if(empresti == null) {
+			emprestimo.add(emprestimoAlterar);
 		} else {
-			emprestimo = emprestimoAlterar;
+			empresti = emprestimoAlterar;
 		}
 	}
 	public Emprestimo buscarPorId(int id) {

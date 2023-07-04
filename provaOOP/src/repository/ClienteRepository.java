@@ -2,8 +2,8 @@ package repository;
 
 import java.util.ArrayList;
 
-import model.Cliente;
-import model.Emprestimo;
+import models.Cliente;
+import models.Emprestimo;
 
 public class ClienteRepository {
 
