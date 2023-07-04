@@ -26,5 +26,9 @@ public class Livro {
 		return statusReserva;
 	}
 
+	public void setStatusReserva(StatusReserva newStatus) {
+		this.statusReserva = newStatus;
+	}
+
 
 }

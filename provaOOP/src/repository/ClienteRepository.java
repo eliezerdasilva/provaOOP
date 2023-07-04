@@ -13,13 +13,11 @@ public class ClienteRepository {
 	
 		clientes =  new ArrayList<Cliente>();
 	}
-	public void cadastrar(Cliente clienteSalvar) {
-		clientes.add(clienteSalvar);
-	}
+	
 	public void excluir(Cliente clienteRemover) {
 		clientes.remove(clienteRemover);
 	}
-	public void alterar(Cliente clienteAlterar) {
+	public void salvar(Cliente clienteAlterar) {
 		Cliente cliente = buscarPorId(clienteAlterar.getId());
 		if(cliente == null) {
 			clientes.add(clienteAlterar);
@@ -36,7 +34,7 @@ public class ClienteRepository {
 
 		return clienteSelecionado;
 	}
-	public ArrayList<Cliente> listCliente(){
+	public ArrayList<Cliente> getAll(){
 		return clientes;
 	}
 	

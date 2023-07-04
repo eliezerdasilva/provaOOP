@@ -1,25 +1,44 @@
 package controllers;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import interfaces.RepositorioInterface;
+import enums.StatusReserva;
 import models.Emprestimo;
+import models.Livro;
+import repository.EmprestimoRespository;
+import repository.LivroRepository;
 
 public class EmprestimoController {
     
-    private RepositorioInterface clienteRepo;
+    private EmprestimoRespository emprestimoRepo;
+    private LivroRepository livroRepo;
 
-    public EmprestimoController(RepositorioInterface clienteRepo) {
-        this.clienteRepo = clienteRepo;
+    public EmprestimoController(EmprestimoRespository empRepo, LivroRepository livroRepo) {
+        this.emprestimoRepo = empRepo;
+        this.livroRepo = livroRepo;
     }
 
-    public void criarEmprestimo() {
+    public void realizarEmprestimo(int livroId, int clienteId) {
+        Emprestimo e = new Emprestimo(listarTodos().size() + 1, livroId, clienteId, LocalDateTime.now(), LocalDateTime.now().plusDays(7));
+        emprestimoRepo.cadastrar(e);
 
+        Livro livro = livroRepo.buscarPorId(livroId);
+
+        livro.setStatusReserva(StatusReserva.RESERVADO);
+
+    }
+
+    public void registrarDevolucao(Emprestimo e) {
+        int livroId = e.getlivroId();
+
+        Livro livro = livroRepo.buscarPorId(livroId);
+
+        livro.setStatusReserva(StatusReserva.DISPONIVEL);
     }
 
     public List<Emprestimo> listarTodos() {
-        List<Emprestimo> emprestimos = new ArrayList<>();
+        List<Emprestimo> emprestimos = emprestimoRepo.listEmprestimo();
 
         return emprestimos;
     }

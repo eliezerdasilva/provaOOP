@@ -1,10 +1,9 @@
 package repository;
 
 import java.util.ArrayList;
-
 import models.Livro;
 
-public class LivroRepository {
+public class LivroRepository{
 
 	private ArrayList<Livro> livros;
 
@@ -35,7 +34,7 @@ public class LivroRepository {
 
 		return livroSelecionado;
 	}
-	public ArrayList<Livro> listCliente(){
+	public ArrayList<Livro> getAll(){
 		return livros;
 	}
 }

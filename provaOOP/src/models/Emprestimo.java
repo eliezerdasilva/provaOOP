@@ -1,18 +1,18 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Emprestimo {
 	
 	private int id;
-	private Livro livro;
-	private Cliente cliente;
-	private Date dataEmprestimo;
-	private Date dataRetorno;
+	private int livroId;
+	private int clienteId;
+	private LocalDateTime dataEmprestimo;
+	private LocalDateTime dataRetorno;
 
-	public Emprestimo(int id, Livro livro, Cliente cliente, Date dataEmprestimo, Date dataRetorno) {
+	public Emprestimo(int id, int livroId, int clienteId, LocalDateTime dataEmprestimo, LocalDateTime dataRetorno) {
 		this.id = id;
-		this.livro = livro;
+		this.livroId = livroId;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataRetorno = dataRetorno;
 	}
@@ -21,20 +21,20 @@ public class Emprestimo {
 		return id;
 	}
 
-	public Livro getLivro() {
-		return livro;
+	public int getlivroId() {
+		return livroId;
 	}
 
-	public Date getDataEmprestimo() {
+	public LocalDateTime getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
-	public Date getDataRetorno() {
+	public LocalDateTime getDataRetorno() {
 		return dataRetorno;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public int getclienteId() {
+		return clienteId;
 	}
 	
 }

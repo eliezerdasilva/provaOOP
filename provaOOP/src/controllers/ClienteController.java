@@ -1,25 +1,31 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import interfaces.RepositorioInterface;
 import models.Cliente;
+import repository.ClienteRepository;
 
 public class ClienteController {
     
-    private RepositorioInterface clienteRepo;
+    private ClienteRepository clienteRepo;
 
-    public ClienteController(RepositorioInterface clienteRepo) {
+    public ClienteController(ClienteRepository clienteRepo) {
         this.clienteRepo = clienteRepo;
     }
 
-    public void adicionarCliente(Cliente cliente) {
-        clienteRepo.salvar();
+    public void cadastrar(Cliente cliente) {
+        clienteRepo.salvar(cliente);
+    }
+
+    public void alterar(Cliente cliente) {
+        clienteRepo.salvar(cliente);
+    }
+
+    public void excluir(Cliente cliente) {
+        clienteRepo.excluir(cliente);
     }
 
     public List<Cliente> listarTodos() {
-        List<Cliente> clientes = new ArrayList<>();
+        List<Cliente> clientes = clienteRepo.getAll();
 
         return clientes;
     }
