@@ -13,8 +13,15 @@ public class EmprestimoController {
     
     private EmprestimoRespository emprestimoRepo;
     private LivroRepository livroRepo;
+    
+    
+    
 
-    public EmprestimoController(EmprestimoRespository empRepo, LivroRepository livroRepo) {
+    public EmprestimoController() {
+		super();
+	}
+
+	public EmprestimoController(EmprestimoRespository empRepo, LivroRepository livroRepo) {
         this.emprestimoRepo = empRepo;
         this.livroRepo = livroRepo;
     }

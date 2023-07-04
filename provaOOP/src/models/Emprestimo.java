@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Emprestimo {
 	
@@ -35,6 +36,26 @@ public class Emprestimo {
 
 	public int getclienteId() {
 		return clienteId;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public void setDataEmprestimo(LocalDateTime dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	public void setDataRetorno(LocalDateTime dataRetorno) {
+		this.dataRetorno = dataRetorno;
 	}
 	
 }

@@ -7,8 +7,14 @@ import repository.ClienteRepository;
 public class ClienteController {
     
     private ClienteRepository clienteRepo;
+    
+    
 
-    public ClienteController(ClienteRepository clienteRepo) {
+    public ClienteController() {
+		super();
+	}
+
+	public ClienteController(ClienteRepository clienteRepo) {
         this.clienteRepo = clienteRepo;
     }
 

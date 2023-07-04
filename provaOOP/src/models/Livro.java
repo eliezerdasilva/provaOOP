@@ -7,6 +7,12 @@ public class Livro {
 	private int id;
 	private String titulo;
 	private StatusReserva statusReserva;
+	
+	
+
+	public Livro() {
+		super();
+	}
 
 	public Livro(int id,String titulo, StatusReserva statusReserva) {
 		super();

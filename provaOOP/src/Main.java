@@ -1,7 +1,13 @@
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import controllers.EmprestimoController;
+import controllers.LivroController;
+import enums.StatusReserva;
+import models.Cliente;
+import models.Emprestimo;
 import models.Livro;
 
 class Main {
@@ -10,30 +16,26 @@ class Main {
 		int opcao = 0;
 
 		while (inicializacao) {
-			opcao = Integer.parseInt(JOptionPane.showInputDialog(telaInicial()));
+			opcao = Integer.parseInt(JOptionPane.showInputDialog(montarMenuPrincipal()));
 
 			switch (opcao) {
 			case 1:
-				//int opcao = Integer.parseInt(JOptionPane.showInputDialog(montarSubMenuFuncionarios()));
-				//operacaoFuncionario(opcao, funcionarioController);
+				adicionariLivro();
 				break;
 			case 2:
-				// Chamar menu cliente
+				excluirLivro();
 				break;
 			case 3:
-				// Chamar menu produto
+				
 				break;
 			case 4:
-				// Chamar menu cardapio
+				cadastrarEmprestimo();
 				break;
 			case 5:
-				// Chamar menu mesa
+				
 				break;
 			case 6:
-				// Chamar menu pedido
-				break;
-			case 7:
-				inicializacao = false;
+				
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Escolha uma opção válida");
@@ -42,38 +44,30 @@ class Main {
 		}
     	
         
-		boolean executando = true;
-		int opcaoSelecionada = 0;
-
-		while (executando) {
-			opcaoSelecionada = Integer.parseInt(JOptionPane.showInputDialog(montarMenuPrincipal()));
-
-			switch (opcaoSelecionada) {
-			case 1:
-				break;
-			case 2:
-				// Chamar menu cliente
-				break;
-			case 3:
-				// Listar livros
-				List<Livro> livros;
-				break;
-			case 4:
-				// Chamar menu Registrar empréstimo
-				break;
-			case 5:
-				// Chamar menu Registrar devolução
-				break;
-			case 6:
-				executando = false;
-				break;
-			default:
-				JOptionPane.showMessageDialog(null, "Escolha uma opção válida");
-				break;
-			}
-		}
+		
 		
     }
+
+	private static void excluirLivro() {
+		String livroid = JOptionPane.showInputDialog("Digite o id do livro");
+		LivroController livroController = new LivroController();
+		livroController.excluirLivro(Integer.valueOf(livroid));
+		
+		JOptionPane.showMessageDialog(null, "Excluido");
+	}
+
+	private static void adicionariLivro() {
+		String id = JOptionPane.showInputDialog("Digite o id do livro");
+		String titulo = JOptionPane.showInputDialog("Digite o titulo  ");
+		Livro livro = new Livro();
+		livro.setId(Integer.valueOf(id));
+		livro.setTitulo(titulo);
+		LivroController livroController = new LivroController();
+		livroController.adicionarLivro(livro);
+		
+		JOptionPane.showMessageDialog(null, "Cadastrado");
+		
+	}
 
 	public static Object montarMenuPrincipal() {
 		
@@ -88,5 +82,30 @@ class Main {
 		builder.append("6 - Sair");
 
 		return builder.toString();
+	}
+	public static void cadastrarEmprestimo() {
+		String id = JOptionPane.showInputDialog("Digite o id do emprestimo");
+		String livroid = JOptionPane.showInputDialog("Digite o id do livro");
+		String clienteid = JOptionPane.showInputDialog("Digite o id cliente ");
+		String dataEmprestimo = JOptionPane.showInputDialog("Digite o a  dataEmprestimo");
+		String dataRetorno = JOptionPane.showInputDialog("Digite a dataRetorno");
+	
+		Cliente cliente = new  Cliente();
+		cliente.setId(Integer.valueOf(clienteid));
+	
+		Emprestimo emprestimo = new Emprestimo();
+		
+		emprestimo.setId(Integer.valueOf(id));
+		emprestimo.setCliente(cliente);
+		emprestimo.setDataRetorno(Date.parse(dataRetorno));
+		emprestimo.setLivro(livro);
+		emprestimo.setDataEmprestimo(Date.parse(dataEmprestimo));
+		
+		EmprestimoController controller = new EmprestimoController();
+		controller.criarEmprestimo(emprestimo);
+		
+		JOptionPane.showMessageDialog(null, "Cadastrado");
+		
+		return  ;
 	}
 }

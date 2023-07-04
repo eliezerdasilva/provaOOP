@@ -8,7 +8,13 @@ public class LivroController {
     
     private LivroRepository bookRepo;
 
-    public LivroController(LivroRepository repo) {
+    
+    
+    public LivroController() {
+		super();
+	}
+
+	public LivroController(LivroRepository repo) {
         this.bookRepo = repo;
     }
 
