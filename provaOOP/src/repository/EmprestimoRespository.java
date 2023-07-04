@@ -2,7 +2,7 @@ package repository;
 
 import java.util.ArrayList;
 
-import model.Emprestimo;
+import models.Emprestimo;
 
 public class EmprestimoRespository {
 	
